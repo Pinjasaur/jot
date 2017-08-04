@@ -9,17 +9,16 @@ set -o nounset
 # Magic variables
 __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 __file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
-__base="$(basename ${__file} .sh)"
-__root="$(cd "$(dirname "${__dir}")" && pwd)"
+__base="$(basename "${__file}" .sh)"
 
 # Print out usage information
 usage() {
   cat <<HEREDOC
     _       _
    (_) ___ | |_
-   | |/ _ \| __|
+   | |/ _ \\| __|
    | | (_) | |_
-  _/ |\___/ \__|
+  _/ |\\___/ \\__|
   |__/
 
 Usage:
@@ -37,7 +36,7 @@ list_notes() {
   echo "Here's all your jots:"
 
   for note in "${JOT_PATH}"/*; do
-    echo -e "\t$(basename ${note})"
+    echo -e "\\t$(basename "${note}")"
   done
 }
 
@@ -54,7 +53,7 @@ make_note() {
 
   # Make and open the note
   touch "${JOT_PATH}/${note}.md"
-  ${EDITOR} "${JOT_PATH}/${note}.md"
+  $EDITOR "${JOT_PATH}/${note}.md"
 }
 
 # Primary function
