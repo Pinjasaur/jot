@@ -27,7 +27,8 @@ Usage:
 Options:
   -h --help  Show this screen.
   -l --list  List notes.
-  <no flag>  Create a note.
+  <name>     Create a note named <name>.md.
+             If you want it in a path, use slashes (e.g. foo/bar/baz).
 HEREDOC
 }
 
@@ -35,7 +36,9 @@ HEREDOC
 list_notes() {
   echo "Here's all your jots:"
 
-  for note in "${JOT_PATH}"/*; do
+  # Get all Markdown files in $JOT_PATH
+  shopt -s globstar nullglob
+  for note in "${JOT_PATH}"/**/*.md; do
     echo -e "\\t$(basename "${note}")"
   done
 }
@@ -44,19 +47,27 @@ list_notes() {
 make_note() {
   # Check for note name
   if [[ -z "${*:-}" ]]; then
+    note_dir="."
     # If not set, create one from today's date
-    note="note-$(date +%Y-%m-%d)"
+    note_name="note-$(date +%Y-%m-%d)"
   else
+    note_dir="$(dirname "${*}")"
     # Replace spaces with hyphens
-    note="${*// /-}"
+    note_name="$(basename "${*// /-}")"
+  fi
+
+  # Check directory exists
+  if [[ ! -d "${JOT_PATH}/${note_dir}" ]]; then
+    # Create it if necessary
+    mkdir -p "${JOT_PATH}/${note_dir}"
   fi
 
   # Make and open the note
-  touch "${JOT_PATH}/${note}.md"
-  $EDITOR "${JOT_PATH}/${note}.md"
+  touch "${JOT_PATH}/${note_dir}/${note_name}.md"
+  $EDITOR "${JOT_PATH}/${note_dir}/${note_name}.md"
 }
 
-# Primary function
+# Drives the program
 main() {
   # Check if $JOT_PATH is set
   if [[ -z "${JOT_PATH:-}" ]]; then
@@ -65,7 +76,6 @@ main() {
 
     # Check directory exists
     if [[ ! -d "${JOT_PATH}" ]]; then
-      echo "Creating directory"
       # Create it if necessary
       mkdir -p "${JOT_PATH}"
     fi
