@@ -1,5 +1,7 @@
 # jot
 
+[![Travis](https://img.shields.io/travis/Pinjasaur/jot.svg)](https://travis-ci.org/Pinjasaur/jot)
+
 Jot down notes in Markdown.
 Inspired by [sts10/jot](https://github.com/sts10/jot).
 
