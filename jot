@@ -4,7 +4,6 @@
 set -o errexit
 set -o pipefail
 set -o nounset
-# set -o xtrace
 
 # Magic variables
 __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -87,8 +86,7 @@ main() {
   elif [[ "${1:-}" =~ ^-l|--list$ ]]; then
     list_notes
   else
-    # $* is a string, where $@ is an array
-    ## Want a string to create the note
+    # Pass in args as a string, not array
     make_note "${*:-}"
   fi
 }
