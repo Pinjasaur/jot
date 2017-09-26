@@ -29,7 +29,7 @@ Options:
 
 ## License
 
-[MIT &copy; Paul Esch-Laurent](/LICENSE).
+[MIT &copy; Paul Esch-Laurent][license].
 
-
+[license]: https://pinjasaur.mit-license.org/2017
 [globstar]: https://www.linuxjournal.com/content/globstar-new-bash-globbing-option
