@@ -13,13 +13,6 @@ __base="$(basename "${__file}" .sh)"
 # Print out usage information
 usage() {
   cat <<HEREDOC
-    _       _
-   (_) ___ | |_
-   | |/ _ \\| __|
-   | | (_) | |_
-  _/ |\\___/ \\__|
-  |__/
-
 Usage:
   ${__base} [<arguments>]
 
@@ -33,12 +26,10 @@ HEREDOC
 
 # List all notes
 list_notes() {
-  echo "Here's all your jots:"
-
-  # Get all Markdown files in $JOT_PATH
+  # Get all Markdown files in $JOT_DIR
   shopt -s globstar nullglob
-  for note in "${JOT_PATH}"/**/*.md; do
-    echo -e "\\t$(basename "${note}")"
+  for note in "${JOT_DIR}"/**/*.md; do
+    echo -e "$(basename "${note}")"
   done
 }
 
@@ -56,27 +47,27 @@ make_note() {
   fi
 
   # Check directory exists
-  if [[ ! -d "${JOT_PATH}/${note_dir}" ]]; then
+  if [[ ! -d "${JOT_DIR}/${note_dir}" ]]; then
     # Create it if necessary
-    mkdir -p "${JOT_PATH}/${note_dir}"
+    mkdir -p "${JOT_DIR}/${note_dir}"
   fi
 
   # Make and open the note
-  touch "${JOT_PATH}/${note_dir}/${note_name}.md"
-  $EDITOR "${JOT_PATH}/${note_dir}/${note_name}.md"
+  touch "${JOT_DIR}/${note_dir}/${note_name}.md"
+  $EDITOR "${JOT_DIR}/${note_dir}/${note_name}.md"
 }
 
 # Drives the program
 main() {
-  # Check if $JOT_PATH is set
-  if [[ -z "${JOT_PATH:-}" ]]; then
+  # Check if $JOT_DIR is set
+  if [[ -z "${JOT_DIR:-}" ]]; then
     # If not, set to $HOME/Notes
-    JOT_PATH="${HOME}/Notes"
+    JOT_DIR="${HOME}/Notes"
 
     # Check directory exists
-    if [[ ! -d "${JOT_PATH}" ]]; then
+    if [[ ! -d "${JOT_DIR}" ]]; then
       # Create it if necessary
-      mkdir -p "${JOT_PATH}"
+      mkdir -p "${JOT_DIR}"
     fi
   fi
 

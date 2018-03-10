@@ -5,15 +5,23 @@
 Jot down notes in Markdown.
 Inspired by [sts10/jot](https://github.com/sts10/jot).
 
-Requires Bash >= 4 (for
-[`globstar`][globstar]).
+Requires Bash >= 4 (for [`globstar`][globstar]).
 
 ## Installation
 
-Add the `jot` script to your `$PATH`.
+Add the [`jot` script](/jot) to your `$PATH` or create a function similar to:
+
+```bash
+jot() { 
+  bash /path/to/jot "${@}" 
+}
+```
 
 `jot` defaults to writing to `$HOME/Notes`. You can customize this by setting
-`$JOT_PATH` to something else (e.g. `export JOT_PATH="$HOME/Dropbox/Notes"`).
+`$JOT_DIR` to something else (e.g. `export JOT_DIR="$HOME/Dropbox/Notes"`).
+
+You'll also want to make sure `$EDITOR` is set to your preferred editor 
+(e.g. `export EDITOR='vim'`).
 
 ## Usage
 
@@ -29,7 +37,7 @@ Options:
 
 ## License
 
-[MIT &copy; Paul Esch-Laurent][license].
+[MIT][license] &copy; Paul Esch-Laurent.
 
 [license]: https://pinjasaur.mit-license.org/2017
 [globstar]: https://www.linuxjournal.com/content/globstar-new-bash-globbing-option
