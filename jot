@@ -17,7 +17,7 @@ Usage:
   ${__base} [<arguments>]
 
 Options:
-  -h --help  Show this screen.
+  -h --help  Show this.
   -l --list  List notes.
   <name>     Create a note named <name>.md.
              If you want it in a path, use slashes (e.g. foo/bar/baz).
@@ -63,12 +63,12 @@ main() {
   if [[ -z "${JOT_DIR:-}" ]]; then
     # If not, set to $HOME/Notes
     JOT_DIR="${HOME}/Notes"
+  fi
 
-    # Check directory exists
-    if [[ ! -d "${JOT_DIR}" ]]; then
-      # Create it if necessary
-      mkdir -p "${JOT_DIR}"
-    fi
+  # Check directory exists
+  if [[ ! -d "${JOT_DIR}" ]]; then
+    # Create it if necessary
+    mkdir -p "${JOT_DIR}"
   fi
 
   # Parse arguments
