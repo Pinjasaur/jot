@@ -20,7 +20,7 @@ Options:
   -h --help  Show this.
   -l --list  List notes.
   <name>     Create a note named <name>.md.
-             If you want it in a path, use slashes (e.g. foo/bar/baz).
+             You can also use slashes e.g. foo/bar to create foo/bar.md.
 HEREDOC
 }
 
@@ -29,7 +29,10 @@ list_notes() {
   # Get all Markdown files in $JOT_DIR
   shopt -s globstar nullglob
   for note in "${JOT_DIR}"/**/*.md; do
-    echo -e "$(basename "${note}")"
+    # Strip the $JOT_DIR/ prefix
+    note_path="${note#$JOT_DIR/}"
+    # ... and the .md suffix
+    echo -e "${note_path%.md}"
   done
 }
 
@@ -57,7 +60,7 @@ make_note() {
   $EDITOR "${JOT_DIR}/${note_dir}/${note_name}.md"
 }
 
-# Drives the program
+# Drive it
 main() {
   # Check if $JOT_DIR is set
   if [[ -z "${JOT_DIR:-}" ]]; then
@@ -82,5 +85,5 @@ main() {
   fi
 }
 
-# Call the program
+# Call it
 main "${@:-}"

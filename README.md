@@ -13,7 +13,7 @@ Add the [`jot` script](/jot) to your `$PATH` or create a function similar to:
 
 ```bash
 jot() { 
-  bash /path/to/jot "${@}" 
+  /path/to/jot "${@}" 
 }
 ```
 
@@ -29,10 +29,10 @@ You'll also want to make sure `$EDITOR` is set to your preferred editor
 jot [<arguments>]
 
 Options:
-  -h --help  Display help.
+  -h --help  Show this.
   -l --list  List notes.
   <name>     Create a note named <name>.md.
-             If you want it in a path, use slashes (e.g. foo/bar/baz).
+             You can also use slashes e.g. foo/bar to create foo/bar.md.
 ```
 
 ## License
