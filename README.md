@@ -32,6 +32,7 @@ Options:
   -h --help  Show this.
   -l --list  List notes.
   <name>     Create a note named <name>.md.
+             If no <name>, the default is YYYY/MM/DD.md.
              You can also use slashes e.g. foo/bar to create foo/bar.md.
 ```
 

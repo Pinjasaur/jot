@@ -20,6 +20,7 @@ Options:
   -h --help  Show this.
   -l --list  List notes.
   <name>     Create a note named <name>.md.
+             If no <name>, the default is YYYY/MM/DD.md.
              You can also use slashes e.g. foo/bar to create foo/bar.md.
 HEREDOC
 }
@@ -40,9 +41,9 @@ list_notes() {
 make_note() {
   # Check for note name
   if [[ -z "${*:-}" ]]; then
-    note_dir="."
-    # If not set, create one from today's date
-    note_name="note-$(date +%Y-%m-%d)"
+    # If not, create one from today's date
+    note_dir="$(date +%Y/%m)"
+    note_name="$(date +%d)"
   else
     note_dir="$(dirname "${*}")"
     # Replace spaces with hyphens
