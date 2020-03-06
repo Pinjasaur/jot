@@ -1,14 +1,14 @@
 #!/usr/bin/env bats
 
 # Local directory relative to PWD
-JOT_DIR=./.tmp
+# JOT_DIR=./.tmp
 
 # Don't open interactively—touching is fine
-EDITOR=touch
+# EDITOR=touch
 
-# Stub out to override the system `jot`
+# Stub out to override the system `jot` & load in env vars
 jot() {
-  ./jot "${@}"
+  JOT_DIR=./.tmp EDITOR=touch ./jot "${@}"
 }
 
 setup() {
