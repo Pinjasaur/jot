@@ -1,4 +1,4 @@
 language: shell
 
 script:
- - shellcheck jot && bats test.bats
+ - ls -alh && shellcheck jot && bats test.bats
