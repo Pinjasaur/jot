@@ -2,4 +2,4 @@ language: shell
 
 script:
   # try ls, mkdir/touch, ls?
-  - ls -alh && mkdir -p .tmp2 && touch .tmp2/test1 && ls -alh && shellcheck jot && bats test.bats
+  - ls -alh && mkdir -p .tmp2 && touch .tmp2/test1 && ls -alh .tmp2 && shellcheck jot && bats test.bats
