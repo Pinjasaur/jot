@@ -75,9 +75,6 @@ main() {
     mkdir -p "${JOT_DIR}"
   fi
 
-  : > ".jot.log"
-  echo "${JOT_DIR}" >> ".jot.log"
-
   # Parse arguments
   if [[ "${1:-}" =~ ^-h|--help$ ]]; then
     usage

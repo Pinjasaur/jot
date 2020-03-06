@@ -6,7 +6,7 @@ export JOT_DIR=./.tmp
 # Don't open interactively—touching is fine
 export EDITOR=touch
 
-# Stub out to override the system `jot` & load in env vars
+# Stub out to use local `jot`
 jot() {
   ./jot "${@}"
 }
