@@ -12,10 +12,12 @@ jot() {
 }
 
 setup() {
+  :
   # mkdir -p "${JOT_DIR}"
 }
 
 teardown() {
+  :
   # rm -rf "${JOT_DIR}"
 }
 
