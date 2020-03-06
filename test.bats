@@ -1,24 +1,22 @@
 #!/usr/bin/env bats
 
 # Local directory relative to PWD
-# JOT_DIR=./.tmp
+export JOT_DIR=./.tmp
 
 # Don't open interactively—touching is fine
-# EDITOR=touch
+export EDITOR=touch
 
 # Stub out to override the system `jot` & load in env vars
 jot() {
-  JOT_DIR=./.tmp EDITOR=touch ./jot "${@}"
+  ./jot "${@}"
 }
 
 setup() {
-  :
-  # mkdir -p "${JOT_DIR}"
+  mkdir -p "${JOT_DIR}"
 }
 
 teardown() {
-  :
-  # rm -rf "${JOT_DIR}"
+  rm -rf "${JOT_DIR}"
 }
 
 @test "jot --help prints usage & exits cleanly" {
