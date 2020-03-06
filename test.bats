@@ -12,11 +12,11 @@ jot() {
 }
 
 setup() {
-  mkdir -p "${JOT_DIR}"
+  # mkdir -p "${JOT_DIR}"
 }
 
 teardown() {
-  rm -rf "${JOT_DIR}"
+  # rm -rf "${JOT_DIR}"
 }
 
 @test "jot --help prints usage & exits cleanly" {
