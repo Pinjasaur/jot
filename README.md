@@ -13,7 +13,7 @@ Add the [`jot` script](/jot) to your `$PATH` or create a function similar to:
 
 ```bash
 jot() { 
-  bash /path/to/jot "${@}" 
+  /path/to/jot "${@}" 
 }
 ```
 
@@ -25,19 +25,28 @@ You'll also want to make sure `$EDITOR` is set to your preferred editor
 
 ## Usage
 
+Run `jot <name>` to start writing. You can list notes with `jot --list` and show
+the usage info with `jot --help`:
+
 ```
 jot [<arguments>]
 
 Options:
-  -h --help  Display help.
+  -h --help  Show this.
   -l --list  List notes.
   <name>     Create a note named <name>.md.
-             If you want it in a path, use slashes (e.g. foo/bar/baz).
+             If no <name>, the default is YYYY/MM/DD.md.
+             You can also use slashes e.g. foo/bar to create foo/bar.md.
 ```
+
+## Related
+
+- [jt][jt] - Creates timestamped notes (simplified version of jot)
 
 ## License
 
 [MIT][license] &copy; Paul Esch-Laurent.
 
+[jt]: https://github.com/Pinjasaur/jt
 [license]: https://pinjasaur.mit-license.org/2017
 [globstar]: https://www.linuxjournal.com/content/globstar-new-bash-globbing-option
