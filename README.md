@@ -42,11 +42,13 @@ Options:
 ## Related
 
 - [jt][jt] - Creates timestamped notes (simplified version of jot)
+- [jrnl][jrnl] - Frictionless journaling from the CLI
 
 ## License
 
 [MIT][license] &copy; Paul Esch-Laurent.
 
+[jrnl]: https://github.com/Pinjasaur/jrnl
 [jt]: https://github.com/Pinjasaur/jt
 [license]: https://pinjasaur.mit-license.org/2017
 [globstar]: https://www.linuxjournal.com/content/globstar-new-bash-globbing-option
